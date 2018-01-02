@@ -1,6 +1,9 @@
 {
-  "name": "passport-jwt",
-  "version": "3.0.1",
+  "name": "passport-jwt-json",
+  "publishConfig": {
+    "registry": "https://nexus.umarkcloud.com/repository/npm-releases/"
+  },
+  "version": "3.0.3",
   "description": "Passport authentication strategy using JSON Web Tokens",
   "main": "./lib",
   "scripts": {
