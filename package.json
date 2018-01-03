@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://nexus.umarkcloud.com/repository/npm-releases/"
   },
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Passport authentication strategy using JSON Web Tokens",
   "main": "./lib",
   "scripts": {

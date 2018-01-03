@@ -28,7 +28,7 @@ describe('Strategy', function() {
                     jwtFromRequest: function (r) { return test_data.valid_jwt.token; },
                     secretOrKey: 'secret'
                 },
-                function(jwt_payload, next) {
+                function(a, b, jwt_payload, next) {
                     // Return values aren't important in this case
                     return next(null, {}, {});
                 }
@@ -57,7 +57,7 @@ describe('Strategy', function() {
         var info;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest: function(r) {}, secretOrKey: 'secret'}, function(jwt_payload, next) {
+            strategy = new Strategy({jwtFromRequest: function(r) {}, secretOrKey: 'secret'}, function(a, b, jwt_payload, next) {
                 // Return values aren't important in this case
                 return next(null, {}, {});
             });
@@ -93,7 +93,7 @@ describe('Strategy', function() {
         var info;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest: function(r) {}, secretOrKey: 'secret'}, function(jwt_payload, next) {
+            strategy = new Strategy({jwtFromRequest: function(r) {}, secretOrKey: 'secret'}, function(a, b, jwt_payload, next) {
                 // Return values aren't important in this case
                 return next(null, {}, {});
             });

@@ -18,7 +18,7 @@ describe('Strategy', function() {
         var strategy, user, info;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest:extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(jwt_paylod, next) {
+            strategy = new Strategy({jwtFromRequest:extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(a, b, jwt_paylod, next) {
                 return next(null, {user_id: 1234567890}, {foo:'bar'});
             });
 
@@ -55,7 +55,7 @@ describe('Strategy', function() {
         var strategy, info;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(jwt_payload, next) {
+            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(a, b, jwt_payload, next) {
                 return next(null, false, {message: 'invalid user'});
             });
 
@@ -85,7 +85,7 @@ describe('Strategy', function() {
         var strategy, err;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secrety'}, function(jwt_payload, next) {
+            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secrety'}, function(a, b, jwt_payload, next) {
                 return next(new Error("ERROR"), false, {message: 'invalid user'});
             });
 
@@ -114,7 +114,7 @@ describe('Strategy', function() {
         var strategy, err;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(jwt_payload, next) {
+            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(a, b, jwt_payload, next) {
                 throw new Error("EXCEPTION");
             });
 
@@ -147,7 +147,7 @@ describe('Strategy', function() {
             opts = { passReqToCallback: true };
             opts.secretOrKey = 'secret';
             opts.jwtFromRequest = extract_jwt.fromAuthHeaderAsBearerToken();
-            strategy = new Strategy(opts, function(request, jwt_payload, next) {
+            strategy = new Strategy(opts, function(request, a, b, jwt_payload, next) {
                 // Capture the value passed in as the request argument
                 request_arg = request;
                 return next(null, {user_id: 1234567890}, {foo:'bar'});
@@ -185,7 +185,7 @@ describe('Strategy', function() {
                     return 'an undecoded jwt string';
                 }
             }
-            strategy = new Strategy(opts, function(jwtPayload, next) {
+            strategy = new Strategy(opts, function(a, b, jwtPayload, next) {
                 return next(null, {user_id: 'dont care'}, {});
             });
 
@@ -226,7 +226,7 @@ describe('Strategy', function() {
                     return 'an undecoded jwt string';
                 }
             }
-            strategy = new Strategy(opts, function(jwtPayload, next) {
+            strategy = new Strategy(opts, function(a, b, jwtPayload, next) {
                 return next(null, {user_id: 'dont care'}, {});
             });
 

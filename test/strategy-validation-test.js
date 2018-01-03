@@ -11,7 +11,7 @@ describe('Strategy', function() {
 
         before(function(done) {
             verifyStub = sinon.stub();
-            verifyStub.callsArgWith(1, null, {}, {});
+            verifyStub.callsArgWith(3, null, {}, {});
             options = {};
             options.issuer = "TestIssuer";
             options.audience = "TestAudience";
@@ -82,7 +82,7 @@ describe('Strategy', function() {
         var strategy, payload;
 
         before(function(done) {
-            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(jwt_payload, next) {
+            strategy = new Strategy({jwtFromRequest: extract_jwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'secret'}, function(a, b, jwt_payload, next) {
                 payload = jwt_payload;
                 next(null, {}, {});
             });
